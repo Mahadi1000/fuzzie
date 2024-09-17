@@ -21,6 +21,11 @@ const UploadCareButton = ({ onUpload }: Props) => {
 
   return (
     <div>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@v1/web/uc-file-uploader-regular.min.css"
+      />
+
       <div>
         <FileUploaderRegular
           sourceList="local, url, camera, dropbox"

@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    // "types": ["@uploadcare/blocks/types/jsx"]
+    "types": ["@uploadcare/file-uploader/types/jsx"]
+
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
