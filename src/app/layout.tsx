@@ -3,6 +3,8 @@ import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import ModalProvider from "@/providers/modal-provider";
+import { Toaster } from "@/components/ui/sonner";
 const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,16 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ClerkProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </ClerkProvider>
+        <ModalProvider>
+          <ClerkProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Toaster />
+              {children}
+            </ThemeProvider>
+          </ClerkProvider>
+        </ModalProvider>
       </body>
     </html>
   );
