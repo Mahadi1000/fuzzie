@@ -29,6 +29,7 @@ import { EditorCanvasDefaultCardTypes } from "@/lib/constant";
 import EditorCanvasCardSingle from "./editor-canvas-card-single";
 import FlowInstance from "./flow-instance";
 import EditorCanvasSidebar from "./editor-canvas-sidebar";
+import { onGetNodesEdges } from "../../../_actions/workflow-connections";
 
 type Props = {};
 
@@ -165,7 +166,7 @@ const EditorCanvas = (props: Props) => {
 
 
   const onGetWorkFlow = async () => {
-    setIsWorkFlowLoading(false);
+    setIsWorkFlowLoading(true);
     const response = await onGetNodesEdges(pathname.split("/").pop()!);
     if (response !== null && response !== undefined) {
         setEdges(JSON.parse(response.edges!));

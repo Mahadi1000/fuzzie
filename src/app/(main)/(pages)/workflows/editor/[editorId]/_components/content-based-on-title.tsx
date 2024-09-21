@@ -17,6 +17,7 @@ import axios from 'axios'
 import { toast } from 'sonner'
 import GoogleFileDetails from './google-file-details'
 import GoogleDriveFiles from './google-drive-files'
+import ActionButton from './action-button'
 
 export interface Option {
   value: string
@@ -123,12 +124,12 @@ const ContentBasedOnTitle = ({
             </Card>
           )}
           {title === 'Google Drive' && <GoogleDriveFiles />}
-          {/* <ActionButton
+          <ActionButton
             currentService={title}
             nodeConnection={nodeConnection}
             channels={selectedSlackChannels}
             setChannels={setSelectedSlackChannels}
-          /> */}
+          />
         </div>
       </Card>
     </AccordionContent>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 
 import { toast } from "sonner";
+import { onCreateNodesEdges, onFlowPublish } from "../_actions/workflow-connections";
 
 type Props = {
   children: React.ReactNode;
@@ -18,19 +19,19 @@ const FlowInstance = ({ children, edges, nodes }: Props) => {
   const { nodeConnection } = useNodeConnections();
 
   const onFlowAutomation = useCallback(async () => {
-    // const flow = await onCreateNodesEdges(
-    //   pathname.split("/").pop()!,
-    //   JSON.stringify(nodes),
-    //   JSON.stringify(edges),
-    //   JSON.stringify(isFlow)
-    // );
+    const flow = await onCreateNodesEdges(
+      pathname.split("/").pop()!,
+      JSON.stringify(nodes),
+      JSON.stringify(edges),
+      JSON.stringify(isFlow)
+    );
 
-    // if (flow) toast.message(flow.message);
+    if (flow) toast.message(flow.message);
   }, [nodeConnection]);
 
   const onPublishWorkflow = useCallback(async () => {
-    // const response = await onFlowPublish(pathname.split("/").pop()!, true);
-    // if (response) toast.message(response);
+    const response = await onFlowPublish(pathname.split("/").pop()!, true);
+    if (response) toast.message(response);
   }, []);
 
   const onAutomateFlow = async () => {

@@ -2,7 +2,7 @@
 
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
-// import { Client } from "@notionhq/client";
+import { Client } from "@notionhq/client";
 
 export const onNotionConnect = async (
   access_token: string,
@@ -63,43 +63,43 @@ export const getNotionConnection = async () => {
   }
 };
 
-// export const getNotionDatabase = async (
-//   databaseId: string,
-//   accessToken: string
-// ) => {
-//   const notion = new Client({
-//     auth: accessToken,
-//   });
-//   const response = await notion.databases.retrieve({ database_id: databaseId });
-//   return response;
-// };
+export const getNotionDatabase = async (
+  databaseId: string,
+  accessToken: string
+) => {
+  const notion = new Client({
+    auth: accessToken,
+  });
+  const response = await notion.databases.retrieve({ database_id: databaseId });
+  return response;
+};
 
-// export const onCreateNewPageInDatabase = async (
-//   databaseId: string,
-//   accessToken: string,
-//   content: string
-// ) => {
-//   const notion = new Client({
-//     auth: accessToken,
-//   });
+export const onCreateNewPageInDatabase = async (
+  databaseId: string,
+  accessToken: string,
+  content: string
+) => {
+  const notion = new Client({
+    auth: accessToken,
+  });
 
-//   console.log(databaseId);
-//   const response = await notion.pages.create({
-//     parent: {
-//       type: "database_id",
-//       database_id: databaseId,
-//     },
-//     properties: {
-//       name: [
-//         {
-//           text: {
-//             content: content,
-//           },
-//         },
-//       ],
-//     },
-//   });
-//   if (response) {
-//     return response;
-//   }
-// };
+  console.log(databaseId);
+  const response = await notion.pages.create({
+    parent: {
+      type: "database_id",
+      database_id: databaseId,
+    },
+    properties: {
+      name: [
+        {
+          text: {
+            content: content,
+          },
+        },
+      ],
+    },
+  });
+  if (response) {
+    return response;
+  }
+};
